@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>{{article.business_name}}</h1>
+  <small>Written by {{article.business_location}} on {{article.create_date}}</small>
+  <hr>
+  <div>
+    {{article.body | safe}}
+  </div>
+{% endblock %}

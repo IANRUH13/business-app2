@@ -1,0 +1,25 @@
+language: python
+python:
+  - "3.6"
+
+install:
+  - pip install -r requirements.txt
+
+# services:
+#   - mysql
+
+# before-script:
+#   -mysql -c 'create database articles;' -mysql
+
+script:
+  - nosetests
+
+# notifications:
+#   email:
+#     recipients:
+#       - 
+#     on_success: always # default: change
+#     on_failure: always # default: always
+
+after_success:
+  - coveralls

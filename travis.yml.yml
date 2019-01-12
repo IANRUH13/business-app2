@@ -1,0 +1,34 @@
+biss2
+language: python
+python:
+  - 3.7
+services:
+  -posgresql
+# command to set up database
+before_install:
+  - export TZ='Africa/Nairobi'
+before_script:
+  - psql -c "CERATE DATABASE test_db;" -U postgress
+  -psql -c "CREATE USER ian WITH PASSWORD 'qw'-U postgres
+  env:
+    global:
+      - DATABASE_URL=postgresql://ian:challenge123@localhost/test_db
+      -FLASK_APP="biss2.py"
+      -SECRET="
+      -APP_SETTINGS="development"
+      -MAIL_SERVER=smtp.gmail.com
+      -MAIL_USERNAME=biss2
+      -MAIL_PASSWORD=qw
+      -MAIL_PORT= 465
+
+# command to install dependacies
+instaall:
+-pip install python-coveralls
+-pip install -r requirements.txt
+notifications:
+    email: false
+# command to run tests
+script: nosetests tests --with-webapi && coverage report
+
+after_success: coveralls
+
